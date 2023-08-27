@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UP POP</title>
+    <link rel="stylesheet" href="sing_in.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>   
+    <div class="login-container">
+    <div class="img_logo"><img src="image-uppop/logouppop.svg" alt=""></div>
+    <div class="img_logo"><h2>Singin</h2></div>
+    <form @submit.prevent="(form.id)?update(form.id):create()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input  v-model="form.username" id="id" type="text" id="username" name="username" placeholder="Enter your username" required>
+      </div>
+      <div class="form-group">
+        <label for="first_name">first_name</label>
+        <input  v-model="form.first_name" id="id" type="text" id="first_name" name="first_name" placeholder="Enter your first_name" required>
+      </div>
+      <div class="form-group">
+        <label for="last_name">last_name</label>
+        <input v-model="form.last_name" id="id" type="text" id="last_name" name="last_name" placeholder="Enter your last_name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input v-model="form.email" id="id" type="text" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="password" v-model="form.password" id="id">Password</label>
+        <input v-model="form.password" id="id" type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="comfirm_pw" >comfirm password</label>
+        <input v-model="form.first_name" id="id" type="text" id="comfirm_pw" name="comfirm_pw" placeholder="Enter your comfirm password" required>
+      </div>
+      <button type="submit">sign up</button>
+    </form>
+  </div>
+    
+   
+</body>
+<script src="singin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+</html>

@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f5f5f5;
+    margin:0;
+    font-family: 'Noto Sans Thai', sans-serif;
+}
+
+.navbar{
+    display:flex;
+    flex-direction:row;
+    background-color: white;
+    width:100%;
+    height:55px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.back-white{
+    background-color: white;
+    width: 1240px;
+    height:min-content(920px,auto);
+    margin: 25px;
+    border-radius:12px;
+    padding-left: 39px;
+    padding-top: 28px;
+    display: flex;
+    padding-bottom: 28px;
+}
+
+
+.mainbutton{
+    display: flex;
+    align-items: center;
+    gap:85px;
+    justify-self:center;
+    margin-left: 116px;
+
+    
+}
+
+
+.profile-button{
+    display:flex;
+    align-items:center;
+    justify-self: flex-end;
+
+}
+
+.profile{
+    display: flex;
+    padding: 7px 14px;
+    border: 1px solid #777777;
+    margin-left: 34px;
+    margin-right: 50px;
+    min-width: 140px;
+    align-items: center;
+    border-radius: 12px;
+}
+
+
+.size-profile{
+    display: block;
+    width: 26px;
+    border-radius: 50%;
+    align-items: center;
+}
+
+.image-profile{
+    margin-right: 5px;
+}
+
+.poplogo{
+    display: flex;
+    justify-self:flex-start;
+    margin-left: 16px;
+}
+
+.name-profile{
+    font-size: 16px;
+    color: #01919C;
+    font-family: 'Noto Sans Thai', sans-serif;
+}
+
+.main-following{
+  display: flex;
+  flex-direction: column;
+}
+
+.all-following{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Text-following-page{
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.card-activity-more{
+    position: relative;
+    background-color: white;
+    width: 725px;
+    height: 200px;
+    border-radius: 24px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    
+}
+
+.text-more-card1{
+    position: absolute;
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-left: 180px;
+    margin-top: 8px;
+}
+
+.profile-more{
+    position: absolute;
+    bottom: 8px;
+    left: 30px;
+}
+
+.btn-more{
+    position: absolute;
+    background-color: #01919C;
+    border-radius: 12px;
+    width: 224.27px;
+    height: 51.44px;
+    color: white;
+    font-size: 20px;
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-weight: 600;
+    top: 16px;
+    right: 20px;
+    border: 0;
+}
+
+.all-follow-card2{
+    position: relative;
+    width: 741px;
+}
+
+
+
+.back-card{
+    position: absolute;
+    background-color: #00000099;
+    width: 725px;
+    height: 93px;
+    left: 5px;
+    margin: 0;
+    padding: 0;
+    border-radius: 0px 0px 24px 24px;
+    box-shadow: 0px -8px 10px #00000099;
+    padding-left: 40px;
+    bottom: 15px;
+}
+
+.main-follow-card2{
+    color: white;
+    font-family: 'Noto Sans Thai', sans-serif;
+   font-size: 32px;
+   font-weight: 700;
+
+}
+
+.second-follow-card2{
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: 'Noto Sans Thai', sans-serif;
+    margin-top: -5px;
+    font-size: 20px;
+}
+
+.star-follow{
+    position: absolute;
+    background-color: #FFDD02;
+    width: 101.23px;
+    height:70px ;
+    border-radius:24px;
+    right: 40px;
+    top: 50px;
+    border:0;
+}
+
+.card-3{
+    position: relative;
+}
+
+.back-card-3{
+    position: absolute;
+    background-color: #00000099;
+    width:366px ;
+    height: 53px;
+    color: white;
+    border-radius: 0px 0px 24px 24px;
+    bottom: 16px;
+    left: 5px;
+    box-shadow: 0px -8px 10px #00000099;
+    padding-left: 20px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.back-card-bottom{
+    position: absolute;
+    background-color: #00000099;
+    width: 350px ;
+    height: 53px;
+    color: white;
+    border-radius: 0px 0px 24px 24px;
+    bottom: 16px;
+    right: 4px;
+    box-shadow: 0px -8px 10px #00000099;
+    padding-left: 20px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.text-second-card3{
+    display: flex;
+    align-items: center;
+}
+
+.star-follow-card3{
+    position: absolute;
+    background-color: #FFDD02;
+    width: 50px;
+    height:40px ;
+    right: 20px;
+    top: 15px;
+    border-radius: 12px;
+    border:0;
+}
+
+.card-bottom{
+    display: flex;
+}
+
+.all-following{
+    display: flex;
+}
+
+.back-card-5{
+    position: absolute;
+    background-color: #00000099;
+    width:373px ;
+    height: 55px;
+    color: white;
+    border-radius: 0px 0px 24px 24px;
+    bottom: 7px;
+    left: 1px;
+    box-shadow: 0px -8px 10px #00000099;
+    padding-left: 20px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.add-activity{
+    background-color: #54C5EB;
+    border-radius: 10px;
+    width: 51px;
+    height: 46px;
+    color: white;
+    border: 0;
+    margin-top: 25px;
+    font-size: 20px;
+    float: right;
+    cursor: pointer;
+}
+
+.add-activity:hover{
+    width:61px;
+    height: 56px;
+    background-color: #41a0bf;
+    font-size: 24px;
+}
