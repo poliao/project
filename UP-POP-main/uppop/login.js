@@ -1,41 +1,52 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.createElement('form');
-    loginForm.id = 'login-form';
-    document.body.appendChild(loginForm);
-    
-  
-    loginForm.addEventListener('submit', async (e) => {
-        
-       
-      e.preventDefault();
-  
-      // รับข้อมูลจากฟอร์ม
-      const username = document.querySelector('#username').value;
-      const password = document.querySelector('#password').value;
-  
-      try {
-        const response = await fetch('http://localhost:8000/users/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: username,
-            password: password,
-            
-          }),
+app.post('/user' , async(req, res) => {
+    try {
+        const conn =  await mysql.createConnection(dbConfig);
+        const [data] = await conn.query(
+            "INSERT INTO user (id_user, fristname, lastname, username, faculfy, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)",
+             [
+              moment().format('DDMMYYYYhhmmss'), // รหัสสมาชิก (timestamp)
+              req.body.fristname,
+              req.body.lastname,
+              req.body.username,
+              req.body.faculfy,
+              req.body.email,
+              req.body.password,
+            ]
+        );
+        conn.end(); 
+        res.json({
+            "message": "บันทึกข้อมูลสำเร็จแล้ว",
+            "id": data.insertId,
+            "data": req.body
         });
-  
-        if (response.status === 200) {
-          // ล็อกอินสำเร็จ
-          console.log('ล็อกอินสำเร็จ');
-        } else {
-          // ล็อกอินไม่สำเร็จ
-          console.error('ล็อกอินไม่สำเร็จ');
-        }
-      } catch (error) {
-        console.error('เกิดข้อผิดพลาดในการล็อกอิน:', error);
-      }
-    });
-  });
-  
+    } catch (error) {
+        console.error(error); // แสดงข้อผิดพลาดในเซิร์ฟเวอร์
+        res.status(500).json({"message": "Internal Server Error"});
+
+    }
+});
+
+app.put('/users/:id' , async(req, res) => { 
+    try {
+        const conn = await mysql.createConnection(dbConfig);  
+        const [data] = await conn.query("UPDATE user SET first_name = ?, last_name = ?, tel = ? ,address = ? , gender = ? , email = ? WHERE id = ?",
+        [
+            req.body.first_name,
+            req.body.last_name,
+            req.body.tel,
+            req.body.address,
+            req.body.gender,
+            req.body.email,
+            req.params.id
+        ]);
+        conn.end();
+        res.json({
+            "message": "แก้ไขข้อมูลสำเร็จแล้ว",
+            "id": req.params.id,
+            "data": req.body
+        });
+    } catch (error) {
+        console.error(error); // แสดงข้อผิดพลาดในเซิร์ฟเวอร์
+        res.status(500).json({"message": "Internal Server Error"});
+    }
+});
