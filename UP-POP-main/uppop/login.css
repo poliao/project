@@ -17,7 +17,7 @@ body {
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   }
-  .form-group {
+  .group {
     margin-bottom: 15px;
   }
   label {
