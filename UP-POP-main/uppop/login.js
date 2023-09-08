@@ -1,52 +1,40 @@
-app.post('/user' , async(req, res) => {
-    try {
-        const conn =  await mysql.createConnection(dbConfig);
-        const [data] = await conn.query(
-            "INSERT INTO user (id_user, fristname, lastname, username, faculfy, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)",
-             [
-              moment().format('DDMMYYYYhhmmss'), // รหัสสมาชิก (timestamp)
-              req.body.fristname,
-              req.body.lastname,
-              req.body.username,
-              req.body.faculfy,
-              req.body.email,
-              req.body.password,
-            ]
-        );
-        conn.end(); 
-        res.json({
-            "message": "บันทึกข้อมูลสำเร็จแล้ว",
-            "id": data.insertId,
-            "data": req.body
-        });
-    } catch (error) {
-        console.error(error); // แสดงข้อผิดพลาดในเซิร์ฟเวอร์
-        res.status(500).json({"message": "Internal Server Error"});
+document.addEventListener("DOMContentLoaded", function() {
+    // เมื่อ DOM โหลดเสร็จแล้วจะทำงานที่นี่
 
-    }
-});
+    // สร้างฟังก์ชันเมื่อฟอร์มถูกส่ง
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // ป้องกันฟอร์มให้ทำการรีโหลดหน้าเว็บ
 
-app.put('/users/:id' , async(req, res) => { 
-    try {
-        const conn = await mysql.createConnection(dbConfig);  
-        const [data] = await conn.query("UPDATE user SET first_name = ?, last_name = ?, tel = ? ,address = ? , gender = ? , email = ? WHERE id = ?",
-        [
-            req.body.first_name,
-            req.body.last_name,
-            req.body.tel,
-            req.body.address,
-            req.body.gender,
-            req.body.email,
-            req.params.id
-        ]);
-        conn.end();
-        res.json({
-            "message": "แก้ไขข้อมูลสำเร็จแล้ว",
-            "id": req.params.id,
-            "data": req.body
+        // รับค่า username และ password จากฟอร์ม
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        // สร้างข้อมูล JSON ที่จะส่งไปยังเซิร์ฟเวอร์
+        const data = {
+            username: username,
+            password: password
+        };
+
+        // ใช้ Fetch API เพื่อส่งข้อมูลไปยังเซิร์ฟเวอร์
+        fetch("/login-endpoint", {
+            method: "POST", // หรือ "GET" ตามที่คุณต้องการใช้งาน
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json()) // แปลงคำตอบเป็น JSON
+        .then(response => {
+            // ตรวจสอบค่า response.success และแสดงข้อความที่เหมาะสม
+            if (response.success) {
+                document.getElementById("loginMessage").textContent = response.message;
+            } else {
+                document.getElementById("loginMessage").textContent = response.message;
+                // สามารถใส่โค้ดเพิ่มเติมที่นี่เช่น ล้างค่า input หรือทำอย่างอื่นตามต้องการ
+            }
+        })
+        .catch(error => {
+            console.error("เกิดข้อผิดพลาดในการส่งคำขอ:", error);
         });
-    } catch (error) {
-        console.error(error); // แสดงข้อผิดพลาดในเซิร์ฟเวอร์
-        res.status(500).json({"message": "Internal Server Error"});
-    }
+    });
 });
